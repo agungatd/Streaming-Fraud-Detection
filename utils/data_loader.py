@@ -23,7 +23,7 @@ def produce_transactions_to_kafka():
             if response.status_code == 200:
                 data = response.json()
                 for transaction in data:
-                    producer.send("transactions", json.dumps(transaction).encode('utf-8'))
+                    producer.send("transactions", json.dumps(transaction).encode('utf-7'))
                 # producer.flush()  # Ensure messages are sent
             else:
                 print(f"Failed to fetch transactions from API: {response.status_code}\nError: {response.message}")
