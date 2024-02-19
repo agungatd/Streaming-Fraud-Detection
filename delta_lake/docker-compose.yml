@@ -1,0 +1,13 @@
+version: '3.7'  # Or other suitable version 
+
+services:
+  delta_lake:
+    image: deltaio/delta-docker:latest 
+    stdin_open: true  
+    tty: true
+    entrypoint: /bin/bash 
+    volumes:
+      - ./data_lake:/tmp/data_lake  
+      - ./data_warehouse:/tmp/data_warehouse  
+      - ../spark/stream_api_to_deltalake.py:/opt/spark/work-dir/app/stream_api_to_deltalake.py
+      - ../utils/.env:/opt/spark/work-dir/utils
